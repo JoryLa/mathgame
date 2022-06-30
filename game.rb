@@ -17,9 +17,9 @@ class Game
         correct = question.ask_question
         if correct == false
           player1.lives -= 1
-          puts "WRONG! \n P1: #{player1.lives}/3   P2: #{player2.lives}/3 \n---- NEW TURN ----"
+          puts "WRONG!"
         else
-          puts "CORRECT! \n P1: #{player1.lives}/3   P2: #{player2.lives}/3 \n---- NEW TURN ----"
+          puts "CORRECT!"
         end
         @turn = false
       elsif @turn == false
@@ -27,14 +27,22 @@ class Game
         correct = question.ask_question
         if correct == false
           player2.lives -= 1
-          puts "WRONG! \n P1: #{player1.lives}/3   P2: #{player2.lives}/3 \n---- NEW TURN ----"
+          puts "WRONG!"
         else
-          puts "CORRECT! \n P1: #{player1.lives}/3   P2: #{player2.lives}/3 \n---- NEW TURN ----"
+          puts "CORRECT!"
         end
         @turn = true
       end
+      unless player1.lives == 0 || player2.lives == 0
+        puts "P1: #{player1.lives}/3   P2: #{player2.lives}/3 \n---- NEW TURN ----"
+      end
     end
-    puts "----GAME OVER!---- \n Good bye!"
+    if player1.lives == 0
+      puts "#{player2.player} wins with a score of #{player2.lives}/3"
+    elsif player2.lives == 0
+      puts "#{player1.player} wins with a score of #{player1.lives}/3"
+    end
+    puts "----GAME OVER!---- \nGood bye!"
   end
 end
 

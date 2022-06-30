@@ -5,10 +5,4 @@ class Player
     @player = player
     @lives = 3
   end
-
-  # def player_lives
-    
-  #   "P1: #{@p1_lives}/3   P2: #{@p2_lives}/3 \n---- NEW TURN ----"
-  # end
-
 end
