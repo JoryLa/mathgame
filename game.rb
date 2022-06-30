@@ -1,18 +1,40 @@
 # Responsible for actions
 
 class Game 
-  attr_reader :player1, :player2
-  attr_accessor :turn
+  attr_reader :player1, :player2, :question
   def initialize
     @player1 = Player.new('Player 1')
-    @player2 = Player.new('PLayer 2')
+    @player2 = Player.new('Player 2')
+    @question = Question.new
     @turn = true
   end
 
   def start_game 
-    while @player1.lives > 0 || @player2.lives > 0
-      puts "#{@player1.player}"
+    while player1.lives > 0 && player2.lives > 0
+      # puts @turn
+      if @turn == true
+        puts player1.player
+        correct = question.ask_question
+        if correct == false
+          player1.lives -= 1
+          puts "WRONG! \n P1: #{player1.lives}/3   P2: #{player2.lives}/3 \n---- NEW TURN ----"
+        else
+          puts "CORRECT! \n P1: #{player1.lives}/3   P2: #{player2.lives}/3 \n---- NEW TURN ----"
+        end
+        @turn = false
+      elsif @turn == false
+        puts player2.player
+        correct = question.ask_question
+        if correct == false
+          player2.lives -= 1
+          puts "WRONG! \n P1: #{player1.lives}/3   P2: #{player2.lives}/3 \n---- NEW TURN ----"
+        else
+          puts "CORRECT! \n P1: #{player1.lives}/3   P2: #{player2.lives}/3 \n---- NEW TURN ----"
+        end
+        @turn = true
+      end
     end
+    puts "----GAME OVER!---- \n Good bye!"
   end
 end
 

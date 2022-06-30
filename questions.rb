@@ -12,6 +12,11 @@ class Question
     puts "What does #{number1} + #{number2} equal?"
     answer = number1 + number2
     player_answer = gets.chomp.to_i
+    # if player_input == nil
+    #   return nil
+    # else 
+    #   player_answer = player_input   <---- so we don't get error when quitting app
+    # end
     if answer == player_answer
       return true
     else 
